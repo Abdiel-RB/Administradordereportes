@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "352373036653",
+    "firebase_url": "https://control-estudiantes-df7f3-default-rtdb.firebaseio.com",
+    "project_id": "control-estudiantes-df7f3",
+    "storage_bucket": "control-estudiantes-df7f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352373036653:android:de080fe20495dc95921164",
+        "android_client_info": {
+          "package_name": "com.abdiel.administradordereportes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352373036653-ef6sosuopee1ujd7kkgkeihq2f3tuq9l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcD2DXr0lu4vlWPQPz09m7kp6IEobpwHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352373036653-ef6sosuopee1ujd7kkgkeihq2f3tuq9l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352373036653:android:c4faee8c4c1a47d3921164",
+        "android_client_info": {
+          "package_name": "com.example.ingreportesestudiantes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352373036653-alpj0lethvbq8aefs9g7716j3pnvene9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ingreportesestudiantes",
+            "certificate_hash": "4757b4d49ea11b1b4fdd02b2bfd1b7a140e39223"
+          }
+        },
+        {
+          "client_id": "352373036653-ef6sosuopee1ujd7kkgkeihq2f3tuq9l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcD2DXr0lu4vlWPQPz09m7kp6IEobpwHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352373036653-ef6sosuopee1ujd7kkgkeihq2f3tuq9l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

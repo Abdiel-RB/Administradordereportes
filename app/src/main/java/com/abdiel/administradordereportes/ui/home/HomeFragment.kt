@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.abdiel.administradordereportes.MainActivityEncuestas
 import com.abdiel.administradordereportes.MainActivityReportesEstudiantes
 import com.abdiel.administradordereportes.adaptadores.adaptadorPerfiles
 import com.abdiel.administradordereportes.databinding.FragmentHomeBinding
@@ -155,9 +156,10 @@ class HomeFragment : Fragment() {
                                 val correo = miAdaptador.lista[position].correo
                                 println(correo.trim())
                                 showToast("hola soy ${miAdaptador.lista[position].nombre} ${miAdaptador.lista[position].apellido_Paterno} ${miAdaptador.lista[position].apellido_Materno} ${miAdaptador.lista[position].uid}")
-                                val intent = Intent (requireContext(), MainActivityReportesEstudiantes::class.java)
+
+                                val intent = Intent (requireContext(), MainActivityEncuestas::class.java)
                                 bundle.putString("uid", miAdaptador.lista[position].uid)
-                                //intent.putExtra("uid", miAdaptador.lista[position].uid)
+
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                                 return true

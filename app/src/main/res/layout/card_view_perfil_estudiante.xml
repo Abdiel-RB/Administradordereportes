@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_usuarios_view"
     android:layout_width="match_parent"
-    app:cardBackgroundColor="#537C9C"
+    app:cardBackgroundColor="#9C5364"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
@@ -12,7 +12,7 @@
         android:id="@+id/layout_usuario_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#537C9C"
+        android:background="#DFE9F5"
         android:orientation="vertical">
 
         <LinearLayout
@@ -38,7 +38,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="fecha y hora"
-                android:textColor="#C3BDC5"
+                android:textColor="#FD255B9C"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -87,7 +87,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="1dp"
                         android:text="luis luis"
-                        android:textColor="#C3BDC5"
+                        android:textColor="#FD255B9C"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -111,7 +111,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="1dp"
                         android:text="12345678"
-                        android:textColor="#C3BDC5"
+                        android:textColor="#FD255B9C"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -136,7 +136,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="1dp"
                         android:text="12345678@uagro.mxfgfgfgfgfgfgfgfgfgfgfgfg"
-                        android:textColor="#C3BDC5"
+                        android:textColor="#FD255B9C"
                         android:textStyle="bold" />
                 </LinearLayout>
 

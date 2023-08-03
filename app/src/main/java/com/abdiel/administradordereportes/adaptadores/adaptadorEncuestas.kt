@@ -24,6 +24,8 @@ class adaptadorEncuestas(c: Context): RecyclerView.Adapter<adaptadorEncuestas.Vi
         val pregunta7 = view.findViewById<TextView>(R.id.textViewPregunta7)
         val pregunta8 = view.findViewById<TextView>(R.id.textViewPregunta8)
 
+        val numeroEncuestas = view.findViewById<TextView>(R.id.numeroEncuesta)
+
 
     }
 
@@ -49,6 +51,9 @@ class adaptadorEncuestas(c: Context): RecyclerView.Adapter<adaptadorEncuestas.Vi
         holder.pregunta8.text = lista[position].pregunta8.trim()
 
 
+        //Contador para el numero de Encuesta
+        val en = position +1
+        holder.numeroEncuestas.text = en.toString()
 
 
     }

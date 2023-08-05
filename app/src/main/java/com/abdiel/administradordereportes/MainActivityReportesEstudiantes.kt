@@ -1,7 +1,9 @@
 package com.abdiel.administradordereportes
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abdiel.administradordereportes.adaptadores.adaptadorReportes
@@ -25,6 +27,7 @@ class MainActivityReportesEstudiantes : AppCompatActivity() {
 
     private lateinit var b: Bundle
     private lateinit var uid: String
+    private lateinit var botonR: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,6 +81,12 @@ println("----------->aqui")
             }
 
         })
+
+        botonR = findViewById(R.id.buttonRecorrido)
+        botonR.setOnClickListener {
+            val intent = Intent(this, MapsActivityRecorrido::class.java)
+            startActivity(intent)
+        }
 
 
     }

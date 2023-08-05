@@ -12,7 +12,7 @@
         android:id="@+id/layout_usuario_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="#DFE9F5"
         android:orientation="vertical">
 
 
@@ -29,10 +29,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/white"
                 android:text="1"
                 android:textSize="30dp"
-                android:textColor="#43A047"
+                android:background="@color/white"
+                android:textColor="#039BE5"
                 android:textStyle="bold" />
 
 
@@ -44,7 +44,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="fecha y hora"
-                android:textColor="#C3BDC5"
+                android:textColor="#E12144F6"
                 android:textStyle="bold" />
 
 
@@ -65,12 +65,13 @@
             <TextView
                 android:id="@+id/textViewPregunta1"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
 
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="1dp"
+                android:textSize="18dp"
                 android:text="1"
-                android:textColor="#000000"
+                android:textColor="#FD255B9C"
                 android:backgroundTint="#BDB6BF"
                 android:textStyle="italic" />
 
@@ -86,12 +87,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:textSize="18dp"
                 android:text="2._¿Podría mencionarlos?"
                 android:textColor="#464849"
                 android:textStyle="bold" />
-
 
 
             <TextView
@@ -99,9 +99,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-
+                android:textSize="18dp"
                 android:text="Payaso"
-                android:textColor="#000000"
+                android:textColor="#FD255B9C"
                 android:textStyle="italic" />
 
 
@@ -142,7 +142,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:text="3._¿Cuál es el servicio más solicitado en el mes?:"
                         android:textColor="#464849"
                         android:textSize="18dp"
@@ -154,8 +154,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="1dp"
+                        android:textSize="18dp"
                         android:text="7472856410"
-                        android:textColor="#000000"
+                        android:textColor="#FD255B9C"
                         android:textStyle="italic" />
                 </LinearLayout>
 
@@ -168,7 +169,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:textSize="18dp"
                         android:text="4._¿Usted ofrece servicio a domicilio?"
                         android:textColor="#464849"
@@ -180,8 +181,36 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="1dp"
+                        android:textSize="18dp"
                         android:text="No"
-                        android:textColor="#000000"
+                        android:textColor="#FD255B9C"
+                        android:textStyle="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:textSize="18dp"
+                        android:text="5._¿Utiliza alguna red social?"
+                        android:textColor="#464849"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewPregunta5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="1dp"
+                        android:textSize="18dp"
+                        android:text="Si"
+                        android:textColor="#FD255B9C"
                         android:textStyle="italic" />
                 </LinearLayout>
 
@@ -194,33 +223,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:textSize="18dp"
-                        android:text="5._¿Utiliza alguna red social?"
-                        android:textColor="#464849"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewPregunta5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="1dp"
-                        android:text="Si"
-                        android:textColor="#000000"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:textSize="18dp"
                         android:text="6._¿Que aplicacion de servicio a domicilio utiliza?"
                         android:textColor="#464849"
@@ -232,9 +235,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="1dp"
+                        android:textSize="18dp"
                         android:text="rappi"
-                        android:textColor="#000000"
-                        android:textStyle="bold" />
+                        android:textColor="#FD255B9C"
+                        android:textStyle="italic" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -246,7 +250,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:textSize="18dp"
                         android:text="7._¿Cual es su edad?"
                         android:textColor="#464849"
@@ -258,9 +262,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="1dp"
+                        android:textSize="18dp"
                         android:text="35"
-                        android:textColor="#000000"
-                        android:textStyle="bold" />
+                        android:textColor="#FD255B9C"
+                        android:textStyle="italic" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -272,7 +277,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:textSize="18dp"
                         android:text="8._¿Usted tiene casa propia?"
                         android:textColor="#464849"
@@ -284,9 +289,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="1dp"
+                        android:textSize="18dp"
                         android:text="Si"
-                        android:textColor="#000000"
-                        android:textStyle="bold" />
+                        android:textColor="#FD255B9C"
+                        android:textStyle="italic" />
                 </LinearLayout>
 
 

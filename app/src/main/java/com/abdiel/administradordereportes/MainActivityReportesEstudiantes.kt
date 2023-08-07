@@ -1,19 +1,21 @@
 package com.abdiel.administradordereportes
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abdiel.administradordereportes.adaptadores.adaptadorReportes
 import com.abdiel.administradordereportes.modelos.reportes
+import com.abdiel.administradordereportes.modelos.reportesCopia
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import de.hdodenhof.circleimageview.CircleImageView
+
 
 class MainActivityReportesEstudiantes : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -28,15 +30,20 @@ class MainActivityReportesEstudiantes : AppCompatActivity() {
     private lateinit var b: Bundle
     private lateinit var uid: String
     private lateinit var botonR: Button
+    private lateinit var foto: String
+    private lateinit var nombre: String
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_reportes_estudiantes)
         recyclerView = findViewById(R.id.recyclerReportesEstudiantes)
-println("----------->aqui")
+
         b = intent.extras!!
         uid = b.getString("uid").toString()
+        foto = b.getString("fotoEstudiante").toString()
+        nombre = b.getString("nombre").toString()
         println("HOLA: " + uid)
 
         firebaseDatabase = FirebaseDatabase.getInstance()
@@ -57,9 +64,10 @@ println("----------->aqui")
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
 
                 val r = snapshot.getValue(reportes::class.java)
-                println("mi json" + snapshot.getValue())
-                print(snapshot.key)
-                adapter.agregarReporte(r!!)
+                val r2 = snapshot.getValue(reportesCopia::class.java)
+                //println("mi json" + snapshot.getValue())
+                print("min clave "+snapshot.key)
+                adapter.agregarReporte(r!!, r2!!)
                 adapter.notifyDataSetChanged()
 
             }
@@ -84,7 +92,12 @@ println("----------->aqui")
 
         botonR = findViewById(R.id.buttonRecorrido)
         botonR.setOnClickListener {
+          //  var listaDatos: ArrayList<reportesCopia> = ArrayList()
+           //  listaDatos =   adapter.listaDatos // Puedes obtener tu ArrayList de alguna manera
             val intent = Intent(this, MapsActivityRecorrido::class.java)
+            intent.putParcelableArrayListExtra("MyArray", adapter.listaDatos)
+            intent.putExtra("fotoEstudiante", foto)
+            intent.putExtra("nombre", nombre)
             startActivity(intent)
         }
 

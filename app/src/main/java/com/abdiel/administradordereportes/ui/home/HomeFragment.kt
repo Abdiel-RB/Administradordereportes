@@ -172,6 +172,8 @@ class HomeFragment : Fragment() {
                                 val position = recyclerView.getChildAdapterPosition(child)
                                 val correo = miAdaptador.lista[position].correo
                                 val uid =  miAdaptador.lista[position].uid
+                                val foto = miAdaptador.lista[position].foto
+                                val nombre = miAdaptador.lista[position].nombre
 
                                 println(correo.trim())
                                // showToast("hola soy ${miAdaptador.lista[position].nombre} ${miAdaptador.lista[position].apellido_Paterno} ${miAdaptador.lista[position].apellido_Materno} ${miAdaptador.lista[position].uid}")
@@ -181,7 +183,7 @@ class HomeFragment : Fragment() {
 
                                 intent.putExtras(bundle)
                                 startActivity(intent)*/
-                                opciones(uid)
+                                opciones(uid, foto, nombre)
                                 return true
                             }
 
@@ -217,7 +219,7 @@ class HomeFragment : Fragment() {
     }
 
 
-    fun opciones(uid: String){
+    fun opciones(uid: String, foto: String, nombre: String){
         dialogOpciones.setContentView(R.layout.opciones_pop_up)
         dialogOpciones.setCanceledOnTouchOutside(false) // Evitar el cierre al hacer clic fuera del diálogo
 
@@ -225,10 +227,12 @@ class HomeFragment : Fragment() {
         val botonEncuaestas = dialogOpciones.findViewById<Button>(R.id.botonEncuestas)
 
         botonReportes.setOnClickListener{
-         Toast.makeText(requireContext(), "click en reportes", Toast.LENGTH_SHORT) .show()
+         //Toast.makeText(requireContext(), "click en reportes", Toast.LENGTH_SHORT) .show()
 
             val intent = Intent (requireContext(), MainActivityReportesEstudiantes::class.java)
             bundle.putString("uid", uid)
+            bundle.putString("fotoEstudiante", foto)
+            bundle.putString("nombre", nombre)
 
             intent.putExtras(bundle)
             startActivity(intent)
@@ -237,7 +241,7 @@ class HomeFragment : Fragment() {
         }
 
         botonEncuaestas.setOnClickListener{
-            Toast.makeText(requireContext(), "click en encuestas", Toast.LENGTH_SHORT) .show()
+            //Toast.makeText(requireContext(), "click en encuestas", Toast.LENGTH_SHORT) .show()
 
             val intent = Intent (requireContext(), MainActivityEncuestas::class.java)
             bundle.putString("uid", uid)

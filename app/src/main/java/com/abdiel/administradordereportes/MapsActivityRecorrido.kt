@@ -76,10 +76,10 @@ class MapsActivityRecorrido : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        var cont=0
+        var cont = 0
         if (listaDatos != null) {
             for (reporte in listaDatos!!) {
-               cont++
+
                 var latitud: Double = reporte.latitud.toDouble()
                 var longitud: Double = reporte.longitud.toDouble()
                 val sydney = LatLng(latitud, longitud)
@@ -106,6 +106,9 @@ class MapsActivityRecorrido : AppCompatActivity(), OnMapReadyCallback {
                         override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                             // Crear el BitmapDescriptor a partir del Bitmap escalado y con máscara circular
                             val bitmapDescriptor = getRoundedBitmapDescriptor(resource)
+
+                            //aumentamos en 1 el contador de reportes
+                            cont++
 
                             // Agregar el marcador con el BitmapDescriptor personalizado al mapa
                             mMap.addMarker(

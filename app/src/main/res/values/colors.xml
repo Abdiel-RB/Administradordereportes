@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!-- menu OSCURO-->
-    <color name="purple_200">#D178F1</color>
+    <color name="purple_200">#3949AB</color>
     <!-- menu CLARO-->
     <color name="purple_500">#5AA9E6</color>
 

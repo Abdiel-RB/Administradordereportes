@@ -8,9 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.abdiel.administradordereportes.R
 import com.abdiel.administradordereportes.modelos.reportes
+import com.abdiel.administradordereportes.modelos.reportesCopia
 
 class adaptadorReportes(c: Context): RecyclerView.Adapter<adaptadorReportes.ViewHolder>() {
     var lista = ArrayList<reportes>()
+    var listaDatos= ArrayList<reportesCopia>()
     var context = c
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -52,8 +54,9 @@ class adaptadorReportes(c: Context): RecyclerView.Adapter<adaptadorReportes.View
 
     }
 
-    fun agregarReporte(reportes: reportes){
+    fun agregarReporte(reportes: reportes, reportesCopia: reportesCopia){
         lista.add(reportes)
+        listaDatos.add(reportesCopia)
         notifyItemInserted(lista.size)
     }
 

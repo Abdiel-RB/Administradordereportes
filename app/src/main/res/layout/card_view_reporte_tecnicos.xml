@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/white"
+                android:background="#1B3024"
                 android:text="1"
                 android:textSize="30dp"
                 android:textColor="#43A047"

@@ -5,68 +5,76 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/purple_500"
     android:orientation="vertical"
-    android:padding="15dp"
+
     android:layout_gravity="center">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:text="Seleciona la opcion que deseas visualizar"/>
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:background="#242C59">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:orientation="horizontal">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/botonReportes"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="32dp"
-            android:onClick="aceptarNoR"
-            android:text="Reportes"
-            android:textColor="#242C59"
-            android:textStyle="bold"
-            app:backgroundTint="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            android:textSize="20dp"
+            android:text="Seleciona la opcion que deseas visualizar"/>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/botonEncuestas"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="44dp"
-            android:onClick="aceptarNoR"
-            android:text="Encuestas"
-            android:textColor="#242C59"
-            android:textStyle="bold"
-            app:backgroundTint="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/botonReportes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:onClick="aceptarNoR"
+                    android:text="Reportes"
+                    android:textColor="#242C59"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/botonEncuestas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="44dp"
+                    android:onClick="aceptarNoR"
+                    android:text="Encuestas"
+                    android:textColor="#242C59"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout></LinearLayout>
 
 
 </LinearLayout>

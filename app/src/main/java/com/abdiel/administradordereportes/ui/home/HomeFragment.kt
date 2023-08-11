@@ -219,12 +219,13 @@ class HomeFragment : Fragment() {
     }
 
 
+    //Funcion que muestra una ventana emergente con 2 botones de opciones
     fun opciones(uid: String, foto: String, nombre: String){
         dialogOpciones.setContentView(R.layout.opciones_pop_up)
         dialogOpciones.setCanceledOnTouchOutside(false) // Evitar el cierre al hacer clic fuera del diálogo
 
         botonReportes = dialogOpciones.findViewById(R.id.botonReportes)
-        val botonEncuaestas = dialogOpciones.findViewById<Button>(R.id.botonEncuestas)
+        val botonEncuestas = dialogOpciones.findViewById<Button>(R.id.botonEncuestas)
 
         botonReportes.setOnClickListener{
          //Toast.makeText(requireContext(), "click en reportes", Toast.LENGTH_SHORT) .show()
@@ -240,7 +241,7 @@ class HomeFragment : Fragment() {
 
         }
 
-        botonEncuaestas.setOnClickListener{
+        botonEncuestas.setOnClickListener{
             //Toast.makeText(requireContext(), "click en encuestas", Toast.LENGTH_SHORT) .show()
 
             val intent = Intent (requireContext(), MainActivityEncuestas::class.java)

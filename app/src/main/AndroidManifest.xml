@@ -37,15 +37,19 @@
         <activity
             android:name=".MapsActivityRecorrido"
             android:exported="false"
-            android:label="@string/title_activity_maps_recorrido" />
+            android:label="@string/title_activity_maps_recorrido"
+            android:theme="@style/AppThemeNoActionBar"
+            />
         <activity
             android:name=".MainActivityEncuestas"
             android:exported="false"
+            android:theme="@style/AppThemeNoActionBar"
             android:label="@string/title_activity_encuestas"/>
 
         <activity
             android:name=".MainActivityReportesEstudiantes"
             android:exported="false"
+            android:theme="@style/AppThemeNoActionBar"
             android:label="@string/title_activity_reportes"/>
         <activity
             android:name=".MainActivity"

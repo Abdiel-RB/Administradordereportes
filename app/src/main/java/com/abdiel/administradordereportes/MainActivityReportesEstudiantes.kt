@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.abdiel.administradordereportes.adaptadores.adaptadorReportes
 import com.abdiel.administradordereportes.modelos.reportes
 import com.abdiel.administradordereportes.modelos.reportesCopia
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -29,7 +30,7 @@ class MainActivityReportesEstudiantes : AppCompatActivity() {
 
     private lateinit var b: Bundle
     private lateinit var uid: String
-    private lateinit var botonR: Button
+    private lateinit var botonR: FloatingActionButton
     private lateinit var foto: String
     private lateinit var nombre: String
 
@@ -90,7 +91,7 @@ class MainActivityReportesEstudiantes : AppCompatActivity() {
 
         })
 
-        botonR = findViewById(R.id.buttonRecorrido)
+        botonR = findViewById(R.id.fabMapa)
         botonR.setOnClickListener {
           //  var listaDatos: ArrayList<reportesCopia> = ArrayList()
            //  listaDatos =   adapter.listaDatos // Puedes obtener tu ArrayList de alguna manera

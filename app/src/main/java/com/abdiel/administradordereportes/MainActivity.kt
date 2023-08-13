@@ -3,6 +3,7 @@ package com.abdiel.administradordereportes
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -149,6 +150,21 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    //funcion para seleccionar, en la parte de los 3 puntos
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.action_salir -> {
+                //Codigo para manejar la selecion del item 1
+                metodoSalir()
+                return true
+            }
+            // Agrega más casos para otros ítems del menú si es necesario
+            else -> return super.onOptionsItemSelected(item)
+        }
+
+    }
+
+//Funcion para cerrar sesion
     fun metodoSalir(){
         val conexionInternet = conexionInternet(this)
         if (conexionInternet.isInternetConnected()){

@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
 
     //Prueba
-    private var prueba = 220
+    private var prueba = 132
 
     private lateinit var ImageViewFoto: CircleImageView
     private lateinit var txt_nombre: TextView

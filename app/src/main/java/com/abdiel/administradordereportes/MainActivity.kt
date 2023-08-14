@@ -37,6 +37,9 @@ class MainActivity : AppCompatActivity() {
     private var MY_REQUEST_CODE = 200
 
 
+    //Prueba
+    private var prueba = 220
+
     private lateinit var ImageViewFoto: CircleImageView
     private lateinit var txt_nombre: TextView
     private lateinit var txt_correo: TextView

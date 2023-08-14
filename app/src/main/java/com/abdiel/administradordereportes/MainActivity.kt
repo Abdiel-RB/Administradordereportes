@@ -37,6 +37,9 @@ class MainActivity : AppCompatActivity() {
     private var MY_REQUEST_CODE = 200
 
 
+    //Prueba
+    private var prueba = 220
+
     private lateinit var ImageViewFoto: CircleImageView
     private lateinit var txt_nombre: TextView
     private lateinit var txt_correo: TextView
@@ -51,11 +54,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.appBarMain.toolbar)
-
+/* ESTE ERA EL BOTON EN KOTLIN-------------------------
         binding.appBarMain.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
+        */
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)

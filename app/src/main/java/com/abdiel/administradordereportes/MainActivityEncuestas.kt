@@ -43,7 +43,7 @@ class MainActivityEncuestas : AppCompatActivity() {
         uid = b.getString("uid").toString()
         foto = b.getString("fotoEstudiante").toString()
         nombre = b.getString("nombre").toString()
-
+      //  showToast(nombre)
 
         firebaseDatabase = FirebaseDatabase.getInstance()
         databaseReferenceEstudiantes =
@@ -110,6 +110,8 @@ class MainActivityEncuestas : AppCompatActivity() {
         recyclerView.scrollToPosition(miadapter.itemCount - 1)
     }
 
-
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 
 }

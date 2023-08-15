@@ -246,6 +246,8 @@ class HomeFragment : Fragment() {
 
             val intent = Intent (requireContext(), MainActivityEncuestas::class.java)
             bundle.putString("uid", uid)
+            bundle.putString("fotoEstudiante", foto)
+            bundle.putString("nombre", nombre)
 
             intent.putExtras(bundle)
             startActivity(intent)

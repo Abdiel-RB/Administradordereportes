@@ -13,6 +13,7 @@ import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.ui.graphics.TileMode
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -22,6 +23,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.abdiel.administradordereportes.databinding.ActivityMapsRecorridoBinding
+import com.abdiel.administradordereportes.modelos.encuestas
+import com.abdiel.administradordereportes.modelos.encuestasCopia
 import com.abdiel.administradordereportes.modelos.reportesCopia
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -35,9 +38,11 @@ class MapsActivityRecorrido : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsRecorridoBinding
-    var listaDatos: ArrayList<reportesCopia>? = null
+    private lateinit var clave:String
     private lateinit var foto: String
     private lateinit var nombre: String
+    var listaDatosReporte: ArrayList<reportesCopia>? = null
+    var listaDatosEncuesta: ArrayList<encuestasCopia>? = null
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,16 +57,25 @@ class MapsActivityRecorrido : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
 
         nombre = intent.getStringExtra("nombre").toString()
-
         foto = intent.getStringExtra("fotoEstudiante").toString()
-         listaDatos = intent.getParcelableArrayListExtra("MyArray")
-                if (listaDatos != null) {
-                    for (reporte in listaDatos!!) {
-                        Log.d("MapsActivityRecorrido", "ID: ${reporte.nombreDelTecnico}, Título: ${reporte.direccion}")
-                    }
-                }else{
-                    println("no hay nadaaa")
+        clave = intent.getStringExtra("mapas").toString()
+        if (clave == "reporte"){
+            listaDatosReporte = intent.getParcelableArrayListExtra("MyArray")
+            if (listaDatosReporte != null) {
+                for (reporte in listaDatosReporte!!) {
+                    Log.d("MapsActivityRecorrido", "ID: ${reporte.nombreDelTecnico}, Título: ${reporte.direccion}")
                 }
+            }else{
+                println("no hay nadaaa")
+            }
+        }
+        if (clave == "encuesta"){
+            listaDatosEncuesta = intent.getParcelableArrayListExtra("MyArray")
+
+        }
+
+
+
 
     }
 
@@ -77,64 +91,104 @@ class MapsActivityRecorrido : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         var cont = 0
-        if (listaDatos != null) {
-            for (reporte in listaDatos!!) {
 
-                var latitud: Double = reporte.latitud.toDouble()
-                var longitud: Double = reporte.longitud.toDouble()
-                val sydney = LatLng(latitud, longitud)
-                val height = 100
-                val width = 100
-                //mMap.addMarker(MarkerOptions().position(sydney).title("Luis Luis"))
-                //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-                //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13F))
-                val context: Context
-                context = this@MapsActivityRecorrido
+        if (clave == "reporte"){
+            var listaDatos =  listaDatosReporte
+            if (listaDatos != null) {
+                for (reporte in listaDatos!!) {
+                    var latitud: Double = reporte.latitud.toDouble()
+                    var longitud: Double = reporte.longitud.toDouble()
+                    val sydney = LatLng(latitud, longitud)
+                    val height = 100
+                    val width = 100
+                    val imageUrl = foto
+                    Glide.with(this)
+                        .asBitmap()
+                        .load(imageUrl)
+                        .apply(RequestOptions.circleCropTransform()) // Aplicar la máscara circular
+                        .into(object : CustomTarget<Bitmap>(width, height) {
+                            override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                                // Crear el BitmapDescriptor a partir del Bitmap escalado y con máscara circular
+                                val bitmapDescriptor = getRoundedBitmapDescriptor(resource)
+                                cont++
 
-              /*  val jira = context.resources.getDrawable(R.drawable.administrador) as BitmapDrawable
-                val ji = jira.bitmap
-                val jiras = Bitmap.createScaledBitmap(ji, width, height, false)
-                mMap.addMarker(MarkerOptions().position(sydney).title("${cont}. ").snippet("Uagro").icon(BitmapDescriptorFactory.fromBitmap(jiras)))
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13F))*/
-                val imageUrl = foto
+                                mMap.addMarker(
+                                    MarkerOptions()
+                                        .position(sydney)
+                                        .title("$cont. $nombre")
+                                        .snippet("${reporte.nombreDelTecnico}, ${reporte.oficio}, ${reporte.telefonoDelTecnico}")
+                                        .icon(bitmapDescriptor)
+                                )
+                                // Mover la cámara a la posición del marcador
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13F))
+                            }
 
-                Glide.with(this)
-                    .asBitmap()
-                    .load(imageUrl)
-                    .apply(RequestOptions.circleCropTransform()) // Aplicar la máscara circular
-                    .into(object : CustomTarget<Bitmap>(width, height) {
-                        override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                            // Crear el BitmapDescriptor a partir del Bitmap escalado y con máscara circular
-                            val bitmapDescriptor = getRoundedBitmapDescriptor(resource)
+                            override fun onLoadCleared(placeholder: Drawable?) {
+                                // Manejar caso si la carga de la imagen falla o se cancela
+                            }
+                        })
+                }
 
-                            //aumentamos en 1 el contador de reportes
-                            cont++
+            }else{
+                println("no hay nadaaa")
 
-                            // Agregar el marcador con el BitmapDescriptor personalizado al mapa
-                            mMap.addMarker(
-                                MarkerOptions()
-                                    .position(sydney)
-                                    .title("$cont. $nombre")
-                                    .snippet("${reporte.nombreDelTecnico}, ${reporte.oficio}, ${reporte.telefonoDelTecnico}")
-                                    .icon(bitmapDescriptor)
-                            )
-
-                            // Mover la cámara a la posición del marcador
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13F))
-                        }
-
-                        override fun onLoadCleared(placeholder: Drawable?) {
-                            // Manejar caso si la carga de la imagen falla o se cancela
-                        }
-                    })
             }
-
-        }else{
-            println("no hay nadaaa")
         }
+
+        if (clave == "encuesta"){
+
+            if (listaDatosEncuesta != null) {
+                //showToast("algo bien ${listaDatosEncuesta!!.size}")
+                for (encuesta in listaDatosEncuesta!!) {
+                    showToast("algo bien ${encuesta.latitud}")
+                    /*   var latitud: Double = encuesta.latitud.toDouble()
+                       var longitud: Double = encuesta.longitud.toDouble()
+
+                       val sydney = LatLng(latitud, longitud)
+                       val height = 100
+                       val width = 100
+                       val imageUrl = foto
+                       Glide.with(this)
+                           .asBitmap()
+                           .load(imageUrl)
+                           .apply(RequestOptions.circleCropTransform()) // Aplicar la máscara circular
+                           .into(object : CustomTarget<Bitmap>(width, height) {
+                               override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                                   // Crear el BitmapDescriptor a partir del Bitmap escalado y con máscara circular
+                                   val bitmapDescriptor = getRoundedBitmapDescriptor(resource)
+                                   cont++
+
+                                   mMap.addMarker(
+                                       MarkerOptions()
+                                           .position(sydney)
+                                           .title("$cont. $nombre")
+                                           .icon(bitmapDescriptor)
+                                   )
+                                   // Mover la cámara a la posición del marcador
+                                   mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13F))
+                               }
+
+                               override fun onLoadCleared(placeholder: Drawable?) {
+                                   // Manejar caso si la carga de la imagen falla o se cancela
+                               }
+                           })*/
+                }
+
+            }else{
+                println("no hay nadaaa")
+                showToast("lat $ long $")
+            }
+        }
+
         // Add a marker in Sydney and move the camera
 
     }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+
 
     private fun getRoundedBitmapDescriptor(bitmap: Bitmap): BitmapDescriptor? {
         val size = Math.min(bitmap.width, bitmap.height)

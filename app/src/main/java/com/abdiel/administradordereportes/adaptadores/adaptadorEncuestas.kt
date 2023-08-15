@@ -8,9 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.abdiel.administradordereportes.R
 import com.abdiel.administradordereportes.modelos.encuestas
+import com.abdiel.administradordereportes.modelos.encuestasCopia
 
 class adaptadorEncuestas(c: Context): RecyclerView.Adapter<adaptadorEncuestas.ViewHolder>() {
     var lista = ArrayList<encuestas>()
+    var listaDatos= ArrayList<encuestasCopia>()
     var context = c
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
@@ -58,8 +60,9 @@ class adaptadorEncuestas(c: Context): RecyclerView.Adapter<adaptadorEncuestas.Vi
 
     }
 
-    fun agregarEncuesta(encuestas: encuestas){
+    fun agregarEncuesta(encuestas: encuestas, e2: encuestasCopia){
         lista.add(encuestas)
+        listaDatos.add(e2)
         notifyItemInserted(lista.size)
     }
 

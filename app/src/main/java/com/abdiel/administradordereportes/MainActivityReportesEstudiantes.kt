@@ -18,6 +18,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 import de.hdodenhof.circleimageview.CircleImageView
 class MainActivityReportesEstudiantes : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -59,22 +61,29 @@ class MainActivityReportesEstudiantes : AppCompatActivity() {
             }
         })
 
+        databaseReferenceEstudiantes.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+               if (snapshot.exists()){
+                   showMenSaje("con datos")
+               }else{
+                   showMenSaje("sin datos")
+               }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+
         childEventListener = databaseReferenceEstudiantes.addChildEventListener(object: ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                if(snapshot == null){
-                    println("vaciooo")
-                    showMenSaje("vacioooo")
-                }else{
                     val r = snapshot.getValue(reportes::class.java)
                     val r2 = snapshot.getValue(reportesCopia::class.java)
                     //println("mi json" + snapshot.getValue())
                     print("min clave "+snapshot.key)
                     adapter.agregarReporte(r!!, r2!!)
                     adapter.notifyDataSetChanged()
-                }
-
-
-
 
             }
 

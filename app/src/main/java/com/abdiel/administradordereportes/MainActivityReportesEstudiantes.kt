@@ -61,13 +61,20 @@ class MainActivityReportesEstudiantes : AppCompatActivity() {
 
         childEventListener = databaseReferenceEstudiantes.addChildEventListener(object: ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                if(snapshot == null){
+                    println("vaciooo")
+                    showMenSaje("vacioooo")
+                }else{
+                    val r = snapshot.getValue(reportes::class.java)
+                    val r2 = snapshot.getValue(reportesCopia::class.java)
+                    //println("mi json" + snapshot.getValue())
+                    print("min clave "+snapshot.key)
+                    adapter.agregarReporte(r!!, r2!!)
+                    adapter.notifyDataSetChanged()
+                }
 
-                val r = snapshot.getValue(reportes::class.java)
-                val r2 = snapshot.getValue(reportesCopia::class.java)
-                //println("mi json" + snapshot.getValue())
-                print("min clave "+snapshot.key)
-                adapter.agregarReporte(r!!, r2!!)
-                adapter.notifyDataSetChanged()
+
+
 
             }
 
@@ -103,6 +110,10 @@ class MainActivityReportesEstudiantes : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun showMenSaje(mensaje: String){
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
     }
 
     private fun setScrollbar(){

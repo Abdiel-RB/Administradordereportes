@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/texto"
@@ -29,33 +29,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:src="@drawable/administrador" />
-        <TextView
-            android:id="@+id/texto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:gravity="center"
-            android:background="@color/black"
-            android:textColor="@color/white"
-            android:text="lo siento "/>
-        <TextView
-            android:id="@+id/texto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:gravity="center"
-            android:background="@color/black"
-            android:textColor="@color/white"
-            android:text="lo siento "/>
-        <TextView
-            android:id="@+id/texto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:gravity="center"
-            android:background="@color/black"
-            android:textColor="@color/white"
-            android:text="lo siento "/>
+
+
     </LinearLayout>
 
 

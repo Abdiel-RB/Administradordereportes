@@ -41,6 +41,10 @@ class MainActivityReportesEstudiantes : AppCompatActivity() {
     private lateinit var textViewMensajeError: TextView
     private lateinit var imageButtonPerro: ImageButton
 
+    //Prueba
+    private var prueba = 132
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

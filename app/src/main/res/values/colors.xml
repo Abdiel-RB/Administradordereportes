@@ -3,12 +3,12 @@
     <!-- menu OSCURO-->
     <color name="purple_200">#3949AB</color>
     <!-- menu CLARO-->
-    <color name="purple_500">#5AA9E6</color>
+    <color name="purple_500">#242C59</color>
 
     <!-- barra notificaciones -->
-    <color name="purple_700">#5ADAE6</color>
+    <color name="purple_700">#F53E7AA8</color>
     <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#8C42CD</color>
+    <color name="teal_700">#242C59</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

@@ -43,7 +43,7 @@ class MainActivityReportesEstudiantes : AppCompatActivity() {
         uid = b.getString("uid").toString()
         foto = b.getString("fotoEstudiante").toString()
         nombre = b.getString("nombre").toString()
-        println("HOLA: " + uid)
+
 
         firebaseDatabase = FirebaseDatabase.getInstance()
         databaseReferenceEstudiantes = firebaseDatabase.getReference("Estudiantes").child(uid.toString()).child("MisReportes")

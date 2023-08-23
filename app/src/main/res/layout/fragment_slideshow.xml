@@ -7,17 +7,56 @@
     android:orientation="vertical"
     tools:context=".ui.slideshow.SlideshowFragment">
 
-
-<TextView
-    android:id="@+id/texto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="25dp"
-    android:text="lo siento "/>
-
-    <ImageButton
-        android:id="@+id/imageButton"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/administrador" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:text="lo siento "/>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/administrador" />
+        <TextView
+            android:id="@+id/texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:text="lo siento "/>
+        <TextView
+            android:id="@+id/texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:text="lo siento "/>
+        <TextView
+            android:id="@+id/texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:text="lo siento "/>
+    </LinearLayout>
+
+
 </LinearLayout>

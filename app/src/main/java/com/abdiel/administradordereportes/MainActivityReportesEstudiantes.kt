@@ -4,7 +4,10 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,6 +37,10 @@ class MainActivityReportesEstudiantes : AppCompatActivity() {
     private lateinit var nombre: String
     private lateinit var floatingActionButton: FloatingActionButton
 
+    //atributos para la imagen y mensaje de error
+    private lateinit var textViewMensajeError: TextView
+    private lateinit var imageButtonPerro: ImageButton
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,12 +68,24 @@ class MainActivityReportesEstudiantes : AppCompatActivity() {
             }
         })
 
+        //instancias de la imagen y mensaje de error
+        textViewMensajeError = findViewById(R.id.texto)
+        imageButtonPerro = findViewById(R.id.imageButton)
+
+
         databaseReferenceEstudiantes.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                if (snapshot.exists()){
                    showMenSaje("con datos")
                }else{
-                   showMenSaje("sin datos")
+                   showMenSaje("Sin datos")
+
+                   //Se activa la visibilidad de la imagen y mensaje de error
+                   textViewMensajeError.visibility = View.VISIBLE
+                   imageButtonPerro.visibility = View.VISIBLE
+
+                   //Ocultamos el boton flotante
+                   floatingActionButton.visibility = View.GONE
                }
             }
 
@@ -84,6 +103,14 @@ class MainActivityReportesEstudiantes : AppCompatActivity() {
                     print("min clave "+snapshot.key)
                     adapter.agregarReporte(r!!, r2!!)
                     adapter.notifyDataSetChanged()
+
+                //Se cambia la visibilidad a oculto
+                textViewMensajeError.visibility = View.GONE
+                imageButtonPerro.visibility = View.GONE
+
+                //Mostramos el boton flotante
+                floatingActionButton.visibility = View.VISIBLE
+
 
             }
 

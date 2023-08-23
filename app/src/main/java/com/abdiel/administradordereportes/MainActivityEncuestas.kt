@@ -4,7 +4,10 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +21,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import de.hdodenhof.circleimageview.CircleImageView
 
 class MainActivityEncuestas : AppCompatActivity() {
@@ -32,6 +36,10 @@ class MainActivityEncuestas : AppCompatActivity() {
     private lateinit var foto: String
     private lateinit var nombre: String
     private lateinit var floatingActionButton: FloatingActionButton
+
+    //atributos para la imagen y mensaje de error
+    private lateinit var textViewMensajeError: TextView
+    private lateinit var imageButtonPerro: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,8 +70,35 @@ class MainActivityEncuestas : AppCompatActivity() {
 
         })
 
-        childEventListener =
-            databaseReferenceEstudiantes.addChildEventListener(object : ChildEventListener {
+        //instancias de la imagen y mensaje de error
+        textViewMensajeError = findViewById(R.id.textoEncuesta)
+        imageButtonPerro = findViewById(R.id.imageButtonEncuesta)
+
+
+        databaseReferenceEstudiantes.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    println("con datos")
+
+                }else{
+                    println("sin datos")
+
+                    //Se activa la visibilidad de la imagen y mensaje de error
+                    textViewMensajeError.visibility = View.VISIBLE
+                    imageButtonPerro.visibility = View.VISIBLE
+
+                    //Ocultamos el boton flotante
+                    floatingActionButton.visibility = View.GONE
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+
+
+        childEventListener = databaseReferenceEstudiantes.addChildEventListener(object : ChildEventListener {
                 override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
 
                     val e = snapshot.getValue(encuestas::class.java)
@@ -72,6 +107,13 @@ class MainActivityEncuestas : AppCompatActivity() {
                     println("min clave " + snapshot.key)
                     miadapter.agregarEncuesta(e!!, e2!!)
                     miadapter.notifyDataSetChanged()
+
+                    //Se cambia la visibilidad a oculto
+                    textViewMensajeError.visibility = View.GONE
+                    imageButtonPerro.visibility = View.GONE
+
+                    //Mostramos el boton flotante
+                    floatingActionButton.visibility = View.VISIBLE
 
                 }
 

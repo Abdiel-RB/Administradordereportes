@@ -12,10 +12,42 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerEncuestas"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/imageButtonEncuesta"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/sad"
+                    android:layout_marginTop="150dp"
+                    android:layout_gravity="center|top"
+                    android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/textoEncuesta"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="25dp"
+                    android:text="Ups! Al parecer este usuario no realizo ninguna encuesta"
+                    android:textAlignment="center"
+                    android:layout_gravity="center|bottom"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="50dp"
+                    android:visibility="gone"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerEncuestas"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+        </ScrollView>
 
     </LinearLayout>
 

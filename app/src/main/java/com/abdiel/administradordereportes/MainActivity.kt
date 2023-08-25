@@ -18,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.abdiel.administradordereportes.conexionInternet.conexionInternet
 import com.abdiel.administradordereportes.databinding.ActivityMainBinding
+import com.abdiel.administradordereportes.ui.home.HomeFragment
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -49,7 +50,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        Thread.sleep(2000)
+        setTheme(R.style.Theme_AdministradorDeReportes)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -101,6 +103,7 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         val conexion = conexionInternet(this)
+
         if (conexion.isInternetConnected()){
             if (requestCode == MY_REQUEST_CODE){
                 currentUser = mAuth!!.currentUser
@@ -108,7 +111,13 @@ class MainActivity : AppCompatActivity() {
                 txt_correo.text = currentUser!!.email.toString()
                 cargarImagen(currentUser!!.photoUrl.toString())
                 Toast.makeText(this@MainActivity, "Bienvenido ${currentUser!!.email}", Toast.LENGTH_SHORT).show()
+                val f = HomeFragment()
+                var fm = supportFragmentManager.beginTransaction().apply {
+                    replace(R.id.nav_host_fragment_content_main, f).commit()
+                }
 
+            }else{
+                finish()
             }
         }else{
             Toast.makeText(this@MainActivity, "No tienes Internet", Toast.LENGTH_SHORT).show()
